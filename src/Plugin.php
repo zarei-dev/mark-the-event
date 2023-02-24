@@ -81,6 +81,10 @@ class Plugin
      */
     protected function setUpLoader()
     {
-
+        $this->loader->add(
+            new Action('init', eventCPT::class, 'RegisterEventPostType', 10, 2),
+            new Action('init', eventCPT::class, 'RegisterEventTaxonomies', 10, 2),
+        );
+        $this->loader->run();
     }
 }

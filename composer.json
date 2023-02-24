@@ -20,6 +20,7 @@
     ],
     "require": {
         "php": "^7.0",
+        "johnbillion/extended-cpts": "^5.0",
         "league/container": "^4.2",
         "typisttech/wp-contained-hook": "^0.3.1"
     },

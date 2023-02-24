@@ -18,6 +18,10 @@ if (! defined('WPINC')) {
     die;
 }
 
+if (! defined('MARK_THE_EVENT_DIR')) {
+    define('MARK_THE_EVENT_DIR', plugin_dir_path(__FILE__));
+}
+
 if (file_exists(__DIR__ . '/vendor/autoload.php')) {
     require_once __DIR__ . '/vendor/autoload.php';
 }

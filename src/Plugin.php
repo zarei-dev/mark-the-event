@@ -84,6 +84,9 @@ class Plugin
         $this->loader->add(
             new Action('init', eventCPT::class, 'RegisterEventPostType', 10, 2),
             new Action('init', eventCPT::class, 'RegisterEventTaxonomies', 10, 2),
+            new Filter('acf/settings/save_json', ACFJSON::class, 'Save', 10, 2),
+            new Filter('acf/settings/load_json', ACFJSON::class, 'Load', 10, 2),
+            new Filter('acf/json_directory', ACFJSON::class, 'Directory', 10, 2),
         );
         $this->loader->run();
     }

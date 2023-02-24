@@ -1,0 +1,76 @@
+{
+    "name": "zareidev/mark-the-event",
+    "type": "wordpress-plugin",
+    "description": "A Wordpress plugin for managing events",
+    "keywords": [
+        "form",
+        "wordpress",
+        "wp",
+        "event"
+    ],
+    "homepage": "https://github.com/zarei-dev/mark-the-event/",
+    "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name": "Mohammad Zarei",
+            "email": "mohammad.zarei1380@gmail.com",
+            "homepage": "https://zareidev.ir/",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.0",
+        "league/container": "^4.2",
+        "typisttech/wp-contained-hook": "^0.3.1"
+    },
+    "config": {
+        "preferred-install": {
+            "*": "dist"
+        },
+        "sort-packages": true
+    },
+    "autoload": {
+        "psr-4": {
+            "ZareiDev\\MarkTheEvent\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "ZareiDev\\MarkTheEvent\\Test\\": "tests/unit/"
+        }
+    },
+    "archive": {
+        "exclude": [
+            "/.*",
+            "/*",
+            "!*LICENSE*",
+            "!/*.php",
+            "!/README.txt",
+            "!src",
+            "!vendor/*.php",
+            "!vendor/**/*.php"
+        ]
+    },
+    "prefer-stable": true,
+    "scripts": {
+        "phpstan:analyse": "phpstan analyse",
+        "pretag": [
+            "composer update",
+            "@test",
+            "@phpstan:analyse",
+            "@style:check",
+            "composer normalize",
+            "github_changelog_generator --no-verbose",
+            "npx doctoc README.md"
+        ],
+        "release:build": [
+            "rm -fr vendor",
+            "composer install --no-dev --prefer-dist --optimize-autoloader --no-suggest",
+            "rm -fr release wordpress",
+            "composer archive --format=zip --dir=release --file=disallow-pwned-passwords"
+        ],
+        "style:check": "phpcs",
+        "style:fix": "phpcbf",
+        "test": "codecept run"
+    }
+}

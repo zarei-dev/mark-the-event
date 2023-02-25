@@ -9,7 +9,7 @@ use ExtCPTs\PostTypeAdmin;
 use ExtCPTs\Taxonomy;
 use ExtCPTs\TaxonomyAdmin;
 
-class eventCPT {
+class EventCPT {
     
     public function RegisterEventPostType() {
 

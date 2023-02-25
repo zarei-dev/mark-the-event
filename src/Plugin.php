@@ -104,6 +104,10 @@ class Plugin
             new Filter('gform_form_settings_menu', GravityFormEvent::class, 'RegisterSettingPage', 10, 1),
             new Action('gform_form_settings_page_mark_the_event_settings_page', GravityFormEvent::class, 'LoadSettingPage', 10),
             new Action('gform_after_submission', GravityFormEvent::class, 'AfterSubmission', 10, 2),
+            new Action('show_user_profile', User::class, 'AddCityUserMetaFields', 10, 1),
+            new Action('edit_user_profile', User::class, 'AddCityUserMetaFields', 10, 1),
+            new Action('personal_options_update', User::class, 'SaveCityUserMetaFields', 10, 1),
+            new Action('edit_user_profile_update', User::class, 'SaveCityUserMetaFields', 10, 1),
         );
         $this->loader->run();
     }

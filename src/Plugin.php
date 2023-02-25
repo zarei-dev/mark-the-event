@@ -108,6 +108,9 @@ class Plugin
             new Action('edit_user_profile', User::class, 'AddCityUserMetaFields', 10, 1),
             new Action('personal_options_update', User::class, 'SaveCityUserMetaFields', 10, 1),
             new Action('edit_user_profile_update', User::class, 'SaveCityUserMetaFields', 10, 1),
+            new Action('transition_post_status', Notification::class, 'MaybeSendNotification', 10, 3),
+            new Filter('gform_notification_events', Notification::class, 'AddNotificationEvent', 10, 1),
+            new Filter('gform_pre_send_email', Notification::class, 'FilterEmailRecivers', 10, 4),
         );
         $this->loader->run();
     }
